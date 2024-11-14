@@ -1,0 +1,25 @@
+<h1 class="title">Practica cargar imagen</h1>
+<div class="main-container">
+    <div class="select-container">
+        <h2>Selecciona</h2>
+        <button class="select-button" (click)="fileInput.click()">Seleccionar imagen</button>
+        <input type="file" #fileInput (change)="onFileSelected($event)" style="display: none;" />
+        <input type="text" [value]="fileName" placeholder="imagenurl" readonly />
+    </div>
+    <div class="send-container">
+        <h2>Guardar</h2>
+        <input type="image" [src]="previewUrl" alt="Vista previa de la imagen seleccionada" *ngIf="previewUrl" class="image-preview" />
+        <button class="send-button" (click)="onSaveImage()">Guardar imagen</button>
+    </div>
+</div>
+<div class="search-container">
+    <h2>Buscar Imagen por ID</h2>
+    <input type="text" [(ngModel)]="searchFileId" placeholder="Ingrese el ID de la imagen" />
+    <button class="search-button" (click)="onSearchImage()">Buscar imagen</button>
+
+    <div *ngIf="searchFileUrl" class="result-container">
+        <p>Nombre de archivo: {{ searchFileName }}</p>
+        <img [src]="searchFileUrl" alt="Imagen encontrada" class="image-preview" />
+        <button class="download-button" (click)="onDownloadImage()">Descargar imagen</button>
+    </div>
+</div>
